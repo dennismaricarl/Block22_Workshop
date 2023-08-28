@@ -30,10 +30,27 @@ const getPartyById = async (id) => {
   }
 };
 
-// delete party
+// delete party from the database
 const deleteParty = async (id) => {
   // your code here
-};
+  try{
+    const response = await fetch(
+      `${PARTIES_API_URL}/${id}`,
+      {
+        method:"DELETE"
+      },
+    );
+    const party = await response.json();
+    console.log(party);
+
+    //re-render the parties now that one is deleted
+    const parties = await getAllParties();
+    renderParties(parties);
+    } catch(error) {
+      console.error(error);
+    }
+  
+}
 
 // render a single party by id
 const renderSinglePartyById = async (id) => {
@@ -92,6 +109,7 @@ const renderSinglePartyById = async (id) => {
   }
 };
 
+
 // render all parties
 const renderParties = async (parties) => {
   try {
@@ -109,17 +127,24 @@ const renderParties = async (parties) => {
                 <button class="delete-button" data-id="${party.id}">Delete</button>
             `;
       partyContainer.appendChild(partyElement);
+    
 
       // see details
       const detailsButton = partyElement.querySelector('.details-button');
-      detailsButton.addEventListener('click', async (event) => {
+      detailsButton.addEventListener('click', (event) => {
         // your code here
+        const partyId = event.target.dataset.id;
+        console.log(partyId)
+        renderSinglePartyById(partyId);
+      
       });
 
       // delete party
       const deleteButton = partyElement.querySelector('.delete-button');
       deleteButton.addEventListener('click', async (event) => {
         // your code here
+        const deleteId = event.target.dataset.id
+        deleteParty(deleteId);
       });
     });
   } catch (error) {
