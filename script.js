@@ -74,11 +74,11 @@ const renderSinglePartyById = async (id) => {
     const partyDetailsElement = document.createElement('div');
     partyDetailsElement.classList.add('party-details');
     partyDetailsElement.innerHTML = `
-            <h2>${party.title}</h2>
-            <p>${party.event}</p>
-            <p>${party.city}</p>
-            <p>${party.state}</p>
-            <p>${party.country}</p>
+            <h2>${party.name}</h2>
+            <p>${party.description}</p>
+            <p>${party.date}</p>
+            <p>${party.time}</p>
+            <p>${party.location}</p>
             <h3>Guests:</h3>
             <ul>
             ${guests
@@ -119,11 +119,7 @@ const renderParties = async (parties) => {
       partyElement.classList.add('party');
       partyElement.innerHTML = `
                 <h2>${party.name}</h2>
-                <p>${party.description}</p>
-                <p>${party.date}</p>
-                <p>${party.time}</p>
-                <p>${party.location}</p>
-                <button class="details-button" data-id="${party.id}">See Details</button>
+                <button class="details-button" data-id="${party.id}">Details</button>
                 <button class="delete-button" data-id="${party.id}">Delete</button>
             `;
       partyContainer.appendChild(partyElement);

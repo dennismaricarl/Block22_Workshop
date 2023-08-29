@@ -3,3 +3,33 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: lightseagreen;
+}
+
+
+h2 {
+    padding-bottom: 15px;
+}
+
+#party-container {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    background-color: mintcream;
+}
+
+.party {
+    padding: 20px;
+    color: lightseagreen;
+
+}
+
+button:hover {
+    font-family: 30px Times;
+    background-color:rgb(105, 191, 228);
+    
+}
